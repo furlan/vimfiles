@@ -63,7 +63,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-colorscheme badwolf
+" https://github.com/sjl/badwolf
+colorscheme badwolf 
 
 " Sets markdown syntax for *.md files.
 autocmd BufRead,BufNewFile *.md set filetype=markdown
