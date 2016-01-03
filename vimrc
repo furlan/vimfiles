@@ -63,24 +63,29 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" https://github.com/sjl/badwolf
-colorscheme badwolf 
-
-" Sets markdown syntax for *.md files.
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-
-" Wrap markdown files.
-autocmd BufRead,BufNewFile *.md set wrap
-autocmd BufEnter *.md colorscheme badwolf
-
 " Pathogen call
 execute pathogen#infect()
 
 " Load Airline plugin automatically
 set laststatus=2
 
+" Stick to open CtrlP on work directory to Ctrl+o
+map <C-o> :CtrlP work<CR>
+
 " Load NERDTree automatically
 "autocmd vimenter * NERDTree
 
 "Stick this in your vimrc to open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
+
+" https://github.com/sjl/badwolf
+colorscheme badwolf 
+
+autocmd BufEnter *.md colorscheme badwolf
+
+" Sets markdown syntax for *.md files.
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" Wrap markdown files.
+autocmd BufRead,BufNewFile *.md set wrap 
+autocmd BufRead,BufNewFile *.md set linebreak
