@@ -1,5 +1,5 @@
-"set guifont=Monaco\ for\ Powerline:h12
-set guifont=Source\ Code\ Pro:h14
+"set guifont=Source\ Code\ Pro:h16
+set guifont=Consolas:20
 set antialias                     " MacVim: smooth fonts.
 set encoding=utf-8                " Use UTF-8 everywhere.
 set guioptions-=T                 " Hide toolbar.

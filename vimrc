@@ -1,6 +1,5 @@
 " .vimrc by Flavio Furlan (furlan@abap101.com)
 " Shared by: https://github.com/furlan/vimfiles.git
-
 " Automatic reloading of vimrc
 autocmd! bufwritepost ~/.vim/vimrc source %
 
@@ -28,6 +27,10 @@ vmap <right> <nop>
 " Quit commands redefinition
 noremap <Leader>q :quit<CR>
 noremap <Leader>Q :qa!<CR>
+
+" Use ENTER key to insert line without enter in Insert Mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
 " Tab navigation
 map <Leader>t <esc>:tabnew<CR>
@@ -65,7 +68,8 @@ syntax on
 " Showing line numbers and length
 set number "show line numbers
 set tw=79  "width of document (used by gd)
-set nowrap "don't automatically wrap on load
+"set nowrap "don't automatically wrap on load
+set wrap   "always wrap on open
 set fo-=t  "don't automatically wrap text when typing
 "set colorcolumn=100
 "highlight ColorColumn ctermbg=233
@@ -89,8 +93,8 @@ set noswapfile
 
 " Set highlight actual line
 set cursorline
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+"autocmd WinEnter * setlocal cursorline
+"autocmd WinLeave * setlocal nocursorline
 
 " Vundle configuration
 set nocompatible
@@ -104,6 +108,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/badwolf'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'junegunn/goyo.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -154,7 +159,8 @@ let g:airline_symbols.linenr = ''
 " }}}
 
 " Stick to open CtrlP on work directory to Ctrl+o
-map <C-o> :CtrlP work<CR>
+map <C-w> :CtrlP ~/work<CR>
+map <C-p> :CtrlP ~/Dropbox/_Cache<CR>  
 
 " Load NERDTree automatically
 "autocmd vimenter * NERDTree
@@ -168,15 +174,22 @@ colorscheme badwolf
 
 autocmd BufEnter *.md colorscheme badwolf
 
-" Sets markdown syntax for *.md files.
+" Sets markdown syntax for *.md and *.txt  files.
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.txt set filetype=markdown
 
 " Wrap markdown files.
 autocmd BufRead,BufNewFile *.md set wrap 
 autocmd BufRead,BufNewFile *.md set linebreak
 autocmd BufRead,BufNewFile *.md set nocursorline 
+let g:vim_markdown_folding_disabled=1
 
+" Define Ctrl-M to activate Markdown mode
+map <Leader>m <esc>:Goyo<CR>
+
+autocmd BufRead,BufNewFile *.txt set wrap 
+autocmd BufRead,BufNewFile *.txt set linebreak
+autocmd BufRead,BufNewFile *.txt set nocursorline 
 
 " Sets javascript syntax for *.json files.
 autocmd BufRead,BufNewFile *.json set filetype=javascript
-
