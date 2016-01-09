@@ -96,7 +96,7 @@ set cursorline
 "autocmd WinEnter * setlocal cursorline
 "autocmd WinLeave * setlocal nocursorline
 
-" Vundle configuration
+" ##### Vundle configuration {{{
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -107,13 +107,32 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/badwolf'
-Plugin 'easymotion/vim-easymotion'
+Plugin 'easymotion/vim-easymotion' 
 Plugin 'junegunn/goyo.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
+" }}}
 
-" EasyMotion configuration
+" ##### EasyMotion configuration {{{
 map <Leader>w <Plug>(easymotion-w)
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+"nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+" }}}
 
 " ##### Airline  {{{
 " Load Airline plugin automatically
@@ -158,16 +177,18 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 " }}}
 
-" Stick to open CtrlP on work directory to Ctrl+o
+" ##### Stick to open CtrlP on work directory to Ctrl+o {{{
 map <C-w> :CtrlP ~/work<CR>
 map <C-p> :CtrlP ~/Dropbox/_Cache<CR>  
+" }}}
 
-" Load NERDTree automatically
+" ##### NERDTree automatically {{{
 "autocmd vimenter * NERDTree
 
 "Stick this in your vimrc to open NERDTree with Ctrl+n
 ""map <C-n> :NERDTreeToggle<CR>
 map <Leader>n <esc>:NERDTreeToggle<CR>
+" }}}
 
 " https://github.com/sjl/badwolf
 colorscheme badwolf 
@@ -184,7 +205,7 @@ autocmd BufRead,BufNewFile *.md set linebreak
 autocmd BufRead,BufNewFile *.md set nocursorline 
 let g:vim_markdown_folding_disabled=1
 
-" Define Ctrl-M to activate Markdown mode
+" Define Ctrl-M to toggle Markdown mode
 map <Leader>m <esc>:Goyo<CR>
 
 autocmd BufRead,BufNewFile *.txt set wrap 
