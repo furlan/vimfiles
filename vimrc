@@ -59,6 +59,7 @@ imap <Leader>' ''<esc>i
 imap <Leader>" ""<esc>i
 imap <Leader>( ()<esc>i
 imap <Leader>[ []<esc>i
+imap <Leader>{ {}<esc>i
 
 " start with syntaxe 
 filetype off
@@ -70,10 +71,19 @@ set number "show line numbers
 set tw=79  "width of document (used by gd)
 "set nowrap "don't automatically wrap on load
 set wrap   "always wrap on open
-set fo-=t  "don't automatically wrap text when typing
-"set colorcolumn=100
-"highlight ColorColumn ctermbg=233
+
+"don't automatically wrap text when typing
+set textwidth=0
+set wrapmargin=0
+set formatoptions-=t  
+
 set ruler
+
+" change behavior with wrap word lines.
+noremap  <buffer> <silent> k gk
+noremap  <buffer> <silent> j gj
+noremap  <buffer> <silent> 0 g0
+noremap  <buffer> <silent> $ g$
 
 "easier formatting of paragraphs
 vmap Q gq
