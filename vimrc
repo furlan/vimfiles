@@ -67,7 +67,16 @@ filetype plugin indent on
 syntax on
 
 " Showing line numbers and length
-set number "show line numbers
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+set relativenumber
+nnoremap <Leader>r :call NumberToggle()<cr>
+
 set tw=79  "width of document (used by gd)
 "set nowrap "don't automatically wrap on load
 set wrap   "always wrap on open
@@ -119,6 +128,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/badwolf'
 Plugin 'easymotion/vim-easymotion' 
 Plugin 'junegunn/goyo.vim'
+Plugin 'scrooloose/nerdcommenter'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
