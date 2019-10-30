@@ -130,10 +130,23 @@ Plugin 'sjl/badwolf'
 Plugin 'easymotion/vim-easymotion' 
 Plugin 'junegunn/goyo.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " }}}
-
+" ##### Syntastic configuration {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+" }}}
+"
 " ##### EasyMotion configuration {{{
 map <Leader>w <Plug>(easymotion-w)
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -199,8 +212,8 @@ let g:airline_symbols.linenr = ''
 " }}}
 
 " ##### Stick to open CtrlP on work directory to Ctrl+o {{{
-map <C-w> :CtrlP ~/work<CR>
-map <C-p> :CtrlP ~/Dropbox/_Cache<CR>  
+map <C-p> :CtrlP ~/westrun<CR>
+map <C-a> :CtrlP ~/assetman<CR>  
 " }}}
 
 " ##### NERDTree automatically {{{
