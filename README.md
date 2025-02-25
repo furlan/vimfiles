@@ -1,3 +1,1 @@
-# Vimfiles
-Yet another Vim files.
-
+Migrated to https://github.com/furlan/dotfiles
